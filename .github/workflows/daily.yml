@@ -17,14 +17,22 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - run: npm ci
+
+      - name: Check email secrets
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          [ -n "$GMAIL_USER" ] || { echo "::error::GMAIL_USER secret is missing. Add it under repo Settings → Secrets → Actions."; exit 1; }
+          [ -n "$GMAIL_APP_PASSWORD" ] || { echo "::error::GMAIL_APP_PASSWORD secret is missing. Add it under repo Settings → Secrets → Actions."; exit 1; }
 
       - name: Crawl + email digest
         env:
