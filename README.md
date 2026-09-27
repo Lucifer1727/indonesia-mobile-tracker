@@ -38,7 +38,7 @@ Repo → Settings → Secrets and variables → Actions → New secret:
 | `NOTIFY_EMAIL` | where to send digest (one address, or several comma-separated: `a@gmail.com, b@gmail.com`) |
 
 ### 4. Done
-Workflow `.github/workflows/daily.yml` runs daily at `00:00 UTC = 08:00 PHT`.
+Workflow `.github/workflows/daily.yml` runs daily at `02:30 UTC = 08:00 IST`.
 Run manually anytime: Actions tab → `Daily phone launch crawl` → Run workflow.
 To test email immediately, set secret `SEND_EMPTY_EMAIL=true` once, or trigger with input `send_empty: true`.
 
