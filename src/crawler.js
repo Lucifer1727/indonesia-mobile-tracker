@@ -2,9 +2,16 @@ import { SOURCES } from "./config.js";
 import Parser from "rss-parser";
 import * as cheerio from "cheerio";
 
+const BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+
 const parser = new Parser({
   timeout: 20000,
-  headers: { "User-Agent": "PH-PhoneLaunch-Tracker/1.0 (+github-actions)" },
+  headers: {
+    "User-Agent": BROWSER_UA,
+    Accept: "application/rss+xml, application/xml, text/xml, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+  },
 });
 
 async function fetchRss(source) {
@@ -26,8 +33,9 @@ async function fetchHtml(source) {
   const res = await fetch(source.url, {
     headers: {
       "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36",
-      Accept: "text/html,application/xhtml+xml",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "Accept-Language": "en-US,en;q=0.9",
     },
     signal: AbortSignal.timeout(20000),
   });
