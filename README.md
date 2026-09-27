@@ -35,7 +35,7 @@ Repo → Settings → Secrets and variables → Actions → New secret:
 |--------|-------|
 | `GMAIL_USER` | your gmail, e.g. `you@gmail.com` |
 | `GMAIL_APP_PASSWORD` | 16-char app password |
-| `NOTIFY_EMAIL` | where to send digest (can be same gmail) |
+| `NOTIFY_EMAIL` | where to send digest (one address, or several comma-separated: `a@gmail.com, b@gmail.com`) |
 
 ### 4. Done
 Workflow `.github/workflows/daily.yml` runs daily at `00:00 UTC = 08:00 PHT`.
