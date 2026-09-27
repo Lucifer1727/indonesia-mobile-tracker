@@ -35,6 +35,11 @@ export const SOURCES = [
   { name: "Infinix PH", country: "PH", type: "html", url: "https://ph.infinixmobility.com/" },
   { name: "OnePlus PH", country: "PH", type: "html", url: "https://www.oneplus.com/ph" },
   { name: "Apple PH", country: "PH", type: "html", url: "https://www.apple.com/ph/" },
+  { name: "Motorola PH", country: "PH", type: "html", url: "https://www.motorola.com/ph/" },
+  { name: "Huawei PH", country: "PH", type: "html", url: "https://consumer.huawei.com/ph/" },
+  { name: "ASUS PH", country: "PH", type: "html", url: "https://www.asus.com/ph/" },
+  { name: "Sony PH", country: "PH", type: "html", url: "https://www.sony.com.ph/" },
+  { name: "nubia PH", country: "PH", type: "html", url: "https://www.nubia.com/ph/" },
 ];
 
 // Words that strongly suggest a NEW launch / announcement.
