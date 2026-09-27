@@ -1,0 +1,20 @@
+{
+  "name": "ph-phone-launch-tracker",
+  "version": "1.0.0",
+  "description": "Daily crawler for new phone launches in Philippines, Indonesia and Malaysia. Sends Gmail digest.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "crawl": "node src/index.js --crawl",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "nodemailer": "^6.9.14",
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
