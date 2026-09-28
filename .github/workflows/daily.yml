@@ -16,6 +16,10 @@ on:
 jobs:
   crawl:
     runs-on: ubuntu-latest
+    # Queue runs instead of overlapping (protects the state-file commit).
+    concurrency:
+      group: phone-launch-crawl
+      cancel-in-progress: false
     permissions:
       contents: write
     steps:
