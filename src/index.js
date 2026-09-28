@@ -17,7 +17,14 @@ export async function runDaily(options = {}) {
   console.log(`Detected ${fresh.length} new launch/variant items.`);
 
   // Mark ALL fetched URLs as seen so next run only reports truly new ones.
+  // Saved BEFORE sending email so a mail failure doesn't cause repeat alerts.
   for (const a of articles) if (a.link) seenUrls.add(a.link);
+
+  if (process.env.DRY_RUN === "true") {
+    console.log("[DRY_RUN] state NOT saved (re-run without DRY_RUN for real).");
+  } else {
+    await saveState(seenUrls);
+  }
 
   const shouldSend =
     fresh.length > 0 || process.env.SEND_EMPTY_EMAIL === "true" || options.sendEmpty === true;
@@ -34,11 +41,6 @@ export async function runDaily(options = {}) {
     console.log("No new items — skipping email (set SEND_EMPTY_EMAIL=true to force).");
   }
 
-  if (process.env.DRY_RUN === "true") {
-    console.log("[DRY_RUN] state NOT saved (re-run without DRY_RUN for real).");
-  } else {
-    await saveState(seenUrls);
-  }
   return { totalFetched: articles.length, fresh, errors, mailInfo };
 }
 
