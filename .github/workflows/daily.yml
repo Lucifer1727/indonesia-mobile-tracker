@@ -2,10 +2,10 @@ name: Daily phone launch crawl
 
 on:
   schedule:
-    # 02:30 UTC = 08:00 IST (Asia/Kolkata) daily, plus 03:30 UTC backup.
+    # 05:30 UTC = 11:00 IST (Asia/Kolkata) daily, plus 06:30 UTC backup.
     # Backup is harmless: seen-state dedupe means it only emails if the first run missed.
-    - cron: "30 2 * * *"
-    - cron: "30 3 * * *"
+    - cron: "30 5 * * *"
+    - cron: "30 6 * * *"
   workflow_dispatch:
     inputs:
       send_empty:
